@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BALUM Entertainment</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--bg:#030612;--panel:#081126;--panel2:#0c1730;--text:#f7f8ff;--muted:#9ca9c8;--blue:#00b7ff;--purple:#8c2cff;--pink:#e43cff;--line:#1a3764}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at 10% 10%,#061a3b 0,transparent 30%),radial-gradient(circle at 90% 15%,#21063b 0,transparent 28%),var(--bg);color:var(--text)}a{color:inherit;text-decoration:none}.nav{position:sticky;top:0;z-index:20;background:#030612dd;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.navin{max-width:1180px;margin:auto;padding:15px 22px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:900;font-size:25px;letter-spacing:2px;background:linear-gradient(90deg,var(--blue),var(--pink));-webkit-background-clip:text;color:transparent}.logo small{display:block;font-size:7px;letter-spacing:5px;color:#8997b7;text-align:center}.links{display:flex;gap:20px;color:#b9c5de;font-size:13px}.links a:hover{color:#fff}.btn{border:1px solid var(--purple);border-radius:11px;padding:11px 17px;background:linear-gradient(100deg,#711cff,#a92cff);color:white;cursor:pointer;font-weight:700}.btn.alt{background:transparent;border-color:var(--blue)}.wrap{max-width:1180px;margin:auto;padding:70px 22px}.hero{min-height:calc(100vh - 70px);display:grid;place-items:center;text-align:center;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:700px;height:700px;background:radial-gradient(circle,#006dff38,transparent 65%);filter:blur(15px)}.hero>*{position:relative}.badge{display:inline-block;padding:7px 13px;border:1px solid var(--line);border-radius:999px;color:#b7c5e4;background:#071126aa;font-size:12px}.hero h1{font-size:clamp(42px,7vw,82px);line-height:.98;margin:24px 0;background:linear-gradient(90deg,#fff,#55cfff,#bb47ff,#ff57d9);-webkit-background-clip:text;color:transparent}.hero p{max-width:720px;margin:0 auto 30px;color:var(--muted);font-size:18px}.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:linear-gradient(145deg,#0b1731e8,#050b1be8);border:1px solid var(--line);border-radius:18px;padding:24px}.card h3{margin:8px 0}.card p{color:var(--muted);font-size:14px}.sectiontitle{text-align:center;margin-bottom:35px}.sectiontitle h2{font-size:38px;margin:8px 0}.sectiontitle p{color:var(--muted)}.service{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.visual{height:350px;border-radius:22px;border:1px solid #164f8a;background:radial-gradient(circle,#087cff55,transparent 28%),linear-gradient(135deg,#06152f,#22052d);display:grid;place-items:center;font-size:34px;font-weight:900;text-align:center;text-shadow:0 0 25px #00b7ff}.features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.feature{border:1px solid var(--line);padding:13px;border-radius:10px;color:#cbd6eb;font-size:13px}.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}.photo{height:130px;border-radius:12px;background:linear-gradient(135deg,#0a3970,#6b1181,#061228);display:grid;place-items:center;color:#dfeaff;border:1px solid #204b80}.platform{border-block:1px solid var(--line);background:#050b18}.login{max-width:450px;margin:auto}.input{width:100%;padding:12px;border-radius:10px;border:1px solid #244269;background:#040a18;color:white;margin:6px 0}.google{width:100%;background:white;color:#111;border:0;padding:13px;border-radius:10px;font-weight:700;cursor:pointer;margin-top:12px}.hidden{display:none!important}.dash{display:grid;grid-template-columns:220px 1fr;gap:18px}.side button{display:block;width:100%;text-align:left;background:transparent;border:0;color:#aebbd5;padding:12px;border-radius:9px;cursor:pointer}.side button:hover{background:#0d1d3c;color:#fff}.toolbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center}.albumgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.albumthumb{height:145px;border-radius:13px;background:linear-gradient(135deg,#07477a,#70139a);margin-bottom:12px}.media{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.mediaitem{position:relative}.mediaitem img,.mediaitem video{width:100%;height:180px;object-fit:cover;border-radius:11px;background:#02050d}.check{position:absolute;top:8px;left:8px}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.status{margin:10px 0;color:#7ee7a7}.error{color:#ff7b9c}.contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}textarea{resize:vertical}footer{text-align:center;border-top:1px solid var(--line);padding:30px;color:#7f8eac}.modal{position:fixed;inset:0;background:#000b;display:none;place-items:center;z-index:50;padding:20px}.modal.open{display:grid}.modalbox{width:min(900px,100%);max-height:90vh;overflow:auto;background:#081126;border:1px solid #2c4c7c;border-radius:18px;padding:22px}@media(max-width:800px){.links{display:none}.grid3,.service,.dash,.albumgrid,.admin-grid,.contact{grid-template-columns:1fr}.gallery,.media{grid-template-columns:repeat(2,1fr)}.side{display:none}.wrap{padding:55px 16px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="navin"><a href="#inicio" class="logo">BALUM<small>ENTERTAINMENT</small></a><div class="links"><a href="#inicio">Início</a><a href="#plataforma">Plataforma</a><a href="#tunnel">Túnel de LED</a><a href="#cabine">Cabine de Fotos</a><a href="#contato">Contato</a></div><button class="btn" onclick="showLogin()">Entrar</button></div></nav>
+
+<header id="inicio" class="hero wrap">
+<div><span class="badge">EXPERIÊNCIAS • TECNOLOGIA • MEMÓRIAS</span><h1>Transformando momentos em experiências inesquecíveis.</h1><p>Experiências visuais e interativas para tornar cada evento único.</p><div class="actions"><a class="btn" href="#plataforma">📂 Plataforma</a><a class="btn alt" href="#tunnel">💡 Túnel de LED Infinity</a><a class="btn alt" href="#cabine">📸 Cabine de Fotos</a></div></div>
+</header>
+
+<section class="wrap"><div class="sectiontitle"><h2>Experiências BALUM</h2><p>Soluções para eventos inesquecíveis.</p></div><div class="grid3">
+<div class="card"><div>💡</div><h3>Túnel de LED Infinity</h3><p>Um ambiente imersivo de luz, reflexos e movimento.</p><a class="btn" href="#tunnel">Conhecer</a></div>
+<div class="card"><div>📸</div><h3>Cabine de Fotos</h3><p>Registros divertidos e personalizados para seus convidados.</p><a class="btn" href="#cabine">Conhecer</a></div>
+<div class="card"><div>📂</div><h3>Plataforma</h3><p>Seus registros organizados em uma área privada.</p><a class="btn" href="#plataforma">Acessar</a></div>
+</div></section>
+
+<section id="tunnel" class="wrap"><div class="service"><div><span class="badge">EXPERIÊNCIA IMERSIVA</span><h2>Túnel de LED Infinity</h2><p style="color:var(--muted)">Uma experiência visual futurista para criar registros marcantes.</p><div class="features"><div class="feature">✨ Efeito visual</div><div class="feature">🎥 Vídeos</div><div class="feature">⚡ Estrutura profissional</div><div class="feature">🎉 Eventos</div></div><a class="btn" href="#contato">Quero contratar</a></div><div class="visual">∞<br>LED INFINITY</div></div><div class="gallery"><div class="photo">GALERIA</div><div class="photo">GALERIA</div><div class="photo">GALERIA</div><div class="photo">GALERIA</div></div></section>
+
+<section id="cabine" class="wrap"><div class="service"><div class="visual">📸<br>PHOTO BOOTH</div><div><span class="badge">REGISTRE OS MOMENTOS</span><h2>Cabine de Fotos</h2><p style="color:var(--muted)">Uma cabine moderna para registrar sorrisos e criar lembranças.</p><div class="features"><div class="feature">📷 Fotos</div><div class="feature">🎬 Vídeos e GIFs</div><div class="feature">🔗 Compartilhamento</div><div class="feature">🎨 Personalização</div></div><a class="btn" href="#contato">Quero contratar</a></div></div></section>
+
+<section id="plataforma" class="platform"><div class="wrap">
+<div class="sectiontitle"><span class="badge">ÁREA EXCLUSIVA</span><h2>Plataforma BALUM</h2><p>Entre para acessar os álbuns liberados para sua conta.</p></div>
+<div id="loginPanel" class="card login"><h3>Entrar na plataforma</h3><p>Use sua conta Google para acessar seus registros.</p><button class="google" onclick="googleLogin()">🔵 Entrar com Google</button><p id="authMsg" class="error"></p></div>
+<div id="appPanel" class="hidden"></div>
+</div></section>
+
+<section id="admin" class="wrap hidden"><div class="sectiontitle"><span class="badge">ADMINISTRADOR</span><h2>Painel BALUM</h2></div><div class="admin-grid">
+<div class="card"><h3>Clientes autorizados</h3><div id="clientsList"><p style="color:var(--muted)">Carregando...</p></div></div>
+<div class="card"><h3>Criar álbum</h3><input id="albumName" class="input" placeholder="Nome do evento"><input id="albumEmail" class="input" type="email" placeholder="E-mail autorizado"><button class="btn" onclick="createAlbum()">Criar álbum</button><p id="adminMsg"></p></div>
+</div></section>
+
+<section id="contato" class="wrap"><div class="sectiontitle"><span class="badge">FALE COM A BALUM</span><h2>Entre em contato</h2><p>Conte-nos sobre seu evento.</p></div><div class="contact"><div class="card"><h3>📱 WhatsApp</h3><p>Fale com nossa equipe.</p><h3>📸 Instagram</h3><p>Acompanhe a BALUM.</p><h3>✉️ E-mail</h3><p>Envie sua solicitação.</p></div><form class="card" onsubmit="contactSubmit(event)"><input class="input" required placeholder="Nome"><input class="input" required type="email" placeholder="E-mail"><textarea class="input" rows="6" required placeholder="Mensagem"></textarea><button class="btn">Enviar</button></form></div></section>
+<footer>© 2026 BALUM Entertainment</footer>
+
+<div id="modal" class="modal"><div class="modalbox"><button class="btn alt" style="float:right" onclick="closeModal()">Fechar</button><div id="modalBody"></div></div></div>
+
+<script>
+/* ===== CONFIGURAÇÃO =====
+   Cole aqui a URL e a anon key do seu projeto Supabase.
+*/
+const SUPABASE_URL = "COLE_SUA_SUPABASE_URL";
+const SUPABASE_ANON_KEY = "COLE_SUA_SUPABASE_ANON_KEY";
+const supabaseReady = SUPABASE_URL.startsWith("https://") && !SUPABASE_ANON_KEY.startsWith("COLE_");
+const sb = supabaseReady ? window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY) : null;
+
+let currentUser=null, currentAlbum=null;
+
+function showLogin(){document.querySelector("#plataforma").scrollIntoView({behavior:"smooth"});}
+function contactSubmit(e){e.preventDefault();alert("Mensagem preenchida. Conecte este formulário ao seu WhatsApp, e-mail ou serviço de formulários para receber as mensagens.");e.target.reset();}
+
+async function googleLogin(){
+ if(!sb){document.getElementById("authMsg").textContent="Configure as credenciais do Supabase no arquivo index.html antes de usar o login.";return;}
+ const {error}=await sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:location.origin+location.pathname}});
+ if(error) document.getElementById("authMsg").textContent=error.message;
+}
+async function logout(){if(sb) await sb.auth.signOut(); location.reload();}
+
+async function init(){
+ if(!sb)return;
+ const {data:{session}}=await sb.auth.getSession();
+ if(session) await renderUser(session.user);
+ sb.auth.onAuthStateChange(async(_e,session)=>{if(session) await renderUser(session.user);});
+}
+async function renderUser(user){
+ currentUser=user;
+ document.getElementById("loginPanel").classList.add("hidden");
+ const {data:profile}=await sb.from("profiles").select("is_admin,full_name").eq("id",user.id).maybeSingle();
+ const isAdmin=!!profile?.is_admin;
+ document.getElementById("appPanel").classList.remove("hidden");
+ document.getElementById("appPanel").innerHTML=`<div class="toolbar"><div><h2>Olá, ${escapeHtml(profile?.full_name||user.user_metadata?.full_name||"cliente")} 👋</h2><p style="color:var(--muted)">Álbuns liberados para sua conta.</p></div><button class="btn alt" onclick="logout()">Sair</button></div><div id="albums" class="albumgrid" style="margin-top:22px"></div>`;
+ await loadAlbums();
+ if(isAdmin){document.getElementById("admin").classList.remove("hidden");await loadClients();}
+}
+async function loadAlbums(){
+ const box=document.getElementById("albums");
+ const {data,error}=await sb.from("albums").select("*").order("created_at",{ascending:false});
+ if(error){box.innerHTML="<p class='error'>Não foi possível carregar os álbuns.</p>";return;}
+ box.innerHTML=data?.length?data.map(a=>`<article class="card" onclick="openAlbum('${a.id}')"><div class="albumthumb"></div><h3>📁 ${escapeHtml(a.name)}</h3><p>${escapeHtml(a.description||"")}</p><button class="btn">Abrir álbum</button></article>`).join(""):"<div class='card'><p>Nenhum álbum liberado para esta conta.</p></div>";
+}
+async function openAlbum(id){
+ const {data,error}=await sb.from("albums").select("*").eq("id",id).single();
+ if(error)return alert("Álbum não encontrado.");
+ currentAlbum=data;
+ const {data:files}=await sb.from("media").select("*").eq("album_id",id).order("created_at");
+ document.getElementById("modalBody").innerHTML=`<h2>${escapeHtml(data.name)}</h2><p style="color:var(--muted)">${escapeHtml(data.description||"")}</p><div id="mediaGrid" class="media" style="margin-top:18px"></div>`;
+ const grid=document.getElementById("mediaGrid");
+ if(!files?.length){grid.innerHTML="<p>Nenhum arquivo disponível neste álbum.</p>";}
+ else for(const f of files){
+   const {data:urlData}=await sb.storage.from("event-media").createSignedUrl(f.storage_path,3600);
+   const url=urlData?.signedUrl;
+   if(!url)continue;
+   const el=document.createElement("div");el.className="mediaitem";
+   el.innerHTML=f.mime_type?.startsWith("video/")?`<video controls src="${url}"></video><a class="btn alt" href="${url}" target="_blank" style="display:block;margin-top:5px">Abrir vídeo</a>`:`<img src="${url}" alt=""><a class="btn alt" href="${url}" download style="display:block;margin-top:5px">Baixar</a>`;
+   grid.appendChild(el);
+ }
+ document.getElementById("modal").classList.add("open");
+}
+function closeModal(){document.getElementById("modal").classList.remove("open");}
+async function loadClients(){
+ const box=document.getElementById("clientsList");
+ const {data,error}=await sb.from("profiles").select("id,full_name,email,is_admin").order("email");
+ if(error){box.innerHTML="<p class='error'>Erro ao carregar clientes.</p>";return;}
+ box.innerHTML=data?.length?data.map(p=>`<div class="card" style="padding:12px;margin:8px 0"><b>${escapeHtml(p.full_name||"Sem nome")}</b><br><small style="color:var(--muted)">${escapeHtml(p.email||"")}</small></div>`).join(""):"<p style='color:var(--muted)'>Nenhum cliente cadastrado.</p>";
+}
+async function createAlbum(){
+ const name=document.getElementById("albumName").value.trim(),email=document.getElementById("albumEmail").value.trim();
+ const msg=document.getElementById("adminMsg"); if(!name||!email){msg.className="error";msg.textContent="Preencha nome e e-mail.";return;}
+ const {data:profile,error:pErr}=await sb.from("profiles").select("id").eq("email",email).maybeSingle();
+ if(pErr||!profile){msg.className="error";msg.textContent="O usuário precisa entrar pela primeira vez com o Google antes de receber um álbum.";return;}
+ const {error}=await sb.from("albums").insert({name,owner_id:profile.id});
+ if(error){msg.className="error";msg.textContent=error.message;return;}
+ msg.className="status";msg.textContent="Álbum criado.";document.getElementById("albumName").value="";document.getElementById("albumEmail").value="";await loadAlbums();
+}
+function escapeHtml(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+init();
+</script>
+</body>
+</html>

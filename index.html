@@ -44,13 +44,12 @@
 <div id="modal" class="modal"><div class="modalbox"><button class="btn alt" style="float:right" onclick="closeModal()">Fechar</button><div id="modalBody"></div></div></div>
 
 <script>
-/* ===== CONFIGURAÇÃO =====
-   Cole aqui a URL e a anon key do seu projeto Supabase.
-*/
-const SUPABASE_URL = "COLE_SUA_SUPABASE_URL";
-const SUPABASE_ANON_KEY = "COLE_SUA_SUPABASE_ANON_KEY";
+/* ===== CONFIGURAÇÃO DAS CREDENCIAIS SUPABASE ===== */
+const SUPABASE_URL = "https://kkyrifwpuecyhkazbrii.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_HmAjqvNtIUrZH1SgI3_7MA_Qdh6pf0";
+
 const supabaseReady = SUPABASE_URL.startsWith("https://") && !SUPABASE_ANON_KEY.startsWith("COLE_");
-const sb = supabaseReady ? window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY) : null;
+const sb = supabaseReady ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
 let currentUser=null, currentAlbum=null;
 
